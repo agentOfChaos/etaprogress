@@ -114,6 +114,9 @@ class ETA(object):
         if self._timing_data and numerator < self._timing_data[-1][1]:
             raise ValueError('numerator cannot decrement.')
 
+        if self._timing_data and numerator == self._timing_data[-1][1]:
+            return
+
         # Update data.
         now = _NOW()
         if self._timing_data and now == self._timing_data[-1][0]:
